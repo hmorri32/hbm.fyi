@@ -29,7 +29,7 @@ class Layout extends Component {
             ...scale(1.2),
             marginBottom: rhythm(1.5),
             marginTop: 0,
-            :hover: {
+            hover: {
               color: "red",
             },
           }}
