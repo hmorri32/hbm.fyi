@@ -52,7 +52,7 @@
     "build": "rm -rf public && rm -rf .cache && gatsby build",
     "dev": "gatsby develop",
     "format": "prettier --write '{gatsby-*.js,src/**/*.{js,jsx,json,css}}'",
-    "start": "npm run develop",
+    "start": "npm run dev",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
