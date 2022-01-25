@@ -2,19 +2,16 @@ import React, { Component } from "react";
 import { Link } from "gatsby";
 
 import { rhythm, scale } from "../utils/typography";
-import sun from "../assets/sun.png";
-import moon from "../assets/moon.png";
 
 class Layout extends Component {
-  state = {
-    theme: null,
-  };
+  state = { hover: false };
 
-  componentDidMount() {
-    this.setState({ theme: window.__theme });
-    window.__onThemeChange = () => {
-      this.setState({ theme: window.__theme });
-    };
+  handleMouseEnter() {
+    this.setState({ hover: true });
+  }
+
+  handleMouseLeave() {
+    this.setState({ hover: false });
   }
 
   render() {
@@ -25,14 +22,22 @@ class Layout extends Component {
     if (location.pathname === rootPath) {
       header = (
         <h1
-          style={{
-            ...scale(1.2),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-            hover: {
-              color: "red",
-            },
-          }}
+          style={
+            this.state.hover
+              ? {
+                  ...scale(1.2),
+                  marginBottom: rhythm(1.5),
+                  marginTop: 0,
+                  color: "#007acc",
+                }
+              : {
+                  ...scale(1.2),
+                  marginBottom: rhythm(1.5),
+                  marginTop: 0,
+                }
+          }
+          onMouseEnter={e => this.handleMouseEnter(e)}
+          onMouseLeave={e => this.handleMouseLeave(e)}
         >
           <Link
             style={{
@@ -48,10 +53,20 @@ class Layout extends Component {
     } else {
       header = (
         <h2
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
+          onMouseEnter={e => this.handleMouseEnter(e)}
+          onMouseLeave={e => this.handleMouseLeave(e)}
+          style={
+            this.state.hover
+              ? {
+                  fontFamily: `Montserrat, sans-serif`,
+                  marginTop: 0,
+                  color: "#007acc",
+                }
+              : {
+                  fontFamily: `Montserrat, sans-serif`,
+                  marginTop: 0,
+                }
+          }
         >
           <Link
             style={{
@@ -70,7 +85,7 @@ class Layout extends Component {
         style={{
           marginLeft: `auto`,
           marginRight: `auto`,
-          maxWidth: rhythm(24),
+          maxWidth: rhythm(34),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
