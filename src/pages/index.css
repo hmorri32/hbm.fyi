@@ -1,0 +1,4 @@
+.blog-title a:hover {
+  color: black;
+  text-decoration: underline;
+}
